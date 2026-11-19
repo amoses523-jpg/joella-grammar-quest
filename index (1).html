@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#167e8a">
+<title>Joella's Conjunctive Adverbs Quest</title>
+<style>
+:root{--teal:#087d8b;--teal-soft:#e7f7f8;--purple:#6c46ae;--purple-deep:#4e3288;--purple-soft:#f2ecfc;--ink:#1e3043;--muted:#64738a;--gold:#f1b943;--green:#187551;--red:#aa3f63;--border:#dce6ec;--white:#fff;--shadow:0 15px 42px rgba(26,52,88,.11)}
+*{box-sizing:border-box}
+html{min-height:100%;background:#f5f9fc}
+body{margin:0;color:var(--ink);font-family:'Trebuchet MS',Verdana,Arial,sans-serif;line-height:1.5;background:radial-gradient(circle at 7% 6%,#e4f6f8 0,transparent 31%),radial-gradient(circle at 94% 4%,#efe8fb 0,transparent 28%),#f7fbfd;min-height:100vh}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:4px solid #e3a631;outline-offset:3px}
+[hidden]{display:none!important}
+.shell{max-width:885px;margin:0 auto;padding:24px 20px 45px}
+.masthead{position:relative;overflow:hidden;background:linear-gradient(125deg,#087d8b,#0d8f9f 47%,#6c46ae 120%);color:#fff;border-radius:26px 26px 0 0;padding:30px 33px 23px;box-shadow:var(--shadow)}
+.masthead:before,.masthead:after{content:"✦";position:absolute;color:#d4f6ed;opacity:.5;font-size:54px;pointer-events:none}
+.masthead:before{right:39px;top:17px;transform:rotate(12deg)}
+.masthead:after{right:106px;bottom:3px;font-size:28px}
+.smalltop{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;color:#d9feff}
+.mastrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h1{font-size:clamp(1.75rem,5vw,2.7rem);line-height:1.12;margin:8px 0 9px;letter-spacing:-.035em;max-width:630px}
+.subtitle{margin:0;font-size:1rem;color:#eaffff;max-width:600px}
+.book{font-size:3.5rem;line-height:1;transform:rotate(12deg);filter:drop-shadow(0 5px 5px #12464e88)}
+.workspace{background:#fff;box-shadow:var(--shadow);border:1px solid #e2ebef;border-top:0;border-radius:0 0 26px 26px;padding:30px 32px 32px;min-height:470px}
+.start-layout{display:grid;grid-template-columns:minmax(0,1fr) 205px;gap:24px;align-items:center}
+h2{margin:0 0 12px;font-size:1.7rem;line-height:1.22;color:var(--purple-deep)}
+p{margin:8px 0 14px}
+.intro-steps{margin:16px 0 22px;padding-left:20px}
+.intro-steps li{padding:3px 0}
+.hero-art{width:100%;aspect-ratio:1;border-radius:28px;display:grid;place-items:center;background:linear-gradient(160deg,#e9f9fa,#ede6fb);position:relative;border:2px solid #d9e9f1}
+.hero-art .art-book{font-size:5rem;transform:rotate(-9deg);filter:drop-shadow(0 9px 2px rgba(66,53,123,.1))}
+.hero-art .art-spark{position:absolute;color:var(--purple);font-size:1.8rem}
+.hero-art .s1{top:18px;right:28px}.hero-art .s2{bottom:25px;left:23px;color:#ca8d13}.hero-art .s3{top:36px;left:25px;color:var(--teal)}
+.primary{border:0;border-radius:14px;padding:14px 22px;background:var(--purple);color:#fff;font-weight:800;font-size:1.03rem;box-shadow:0 6px 0 #4a2d87;transition:transform .12s,box-shadow .12s}
+.primary:hover{background:var(--purple-deep)}
+.primary:active{transform:translateY(4px);box-shadow:0 2px 0 #4a2d87}
+.secondary{border:2px solid #b6d8df;border-radius:13px;padding:12px 18px;background:#fff;color:var(--teal);font-weight:800}
+.secondary:hover{background:var(--teal-soft)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--teal-soft);color:#00636e;border:1px solid #bce2e6;border-radius:50px;padding:7px 12px;font-size:.85rem;font-weight:800}
+.note{margin-top:20px;color:var(--muted);font-size:.89rem}
+.topstat{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}
+.score{font-weight:900;color:var(--purple-deep)}
+.progress{height:11px;background:#e9eff2;border-radius:50px;overflow:hidden;margin-bottom:25px}
+.progress>span{display:block;height:100%;width:0%;background:linear-gradient(90deg,#10a5ac,#7b5bc6);transition:width .25s;border-radius:50px}
+.round-label{display:inline-block;text-transform:uppercase;font-size:.81rem;letter-spacing:.09em;font-weight:900;color:var(--teal);margin-bottom:8px}
+.question{font-size:clamp(1.15rem,3vw,1.38rem);font-weight:800;margin:4px 0 19px;line-height:1.5}
+.question em{font-style:normal;color:var(--purple-deep)}
+.answers{display:grid;grid-template-columns:1fr;gap:10px}
+.choice{display:flex;align-items:flex-start;gap:13px;text-align:left;width:100%;border:2px solid #d9e4ea;border-radius:15px;padding:13px 16px;background:#fff;color:var(--ink);font-size:1.01rem;font-weight:700;line-height:1.48;transition:background .1s,border-color .1s,transform .1s}
+.choice:hover:not(:disabled){border-color:#a892d7;background:#faf7ff;transform:translateX(2px)}
+.choice:disabled{cursor:default;opacity:1}
+.letter{width:30px;height:30px;min-width:30px;border-radius:10px;display:grid;place-items:center;background:#eee8fa;color:var(--purple-deep);font-size:.9rem;font-weight:900;line-height:1.1}
+.choice.correct{border-color:#3d9c7e;background:#e9f8f1;color:#155d46}
+.choice.correct .letter{background:#288463;color:#fff}
+.choice.incorrect{border-color:#d37d9c;background:#fdf0f4;color:#823455}
+.choice.incorrect .letter{background:#ad4e71;color:#fff}
+.hint-row{display:flex;justify-content:flex-start;margin-top:18px}
+.hint-toggle{border:none;color:var(--teal);background:transparent;font-weight:800;text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.hint{margin-top:8px;padding:14px 17px;border-left:4px solid var(--gold);background:#fff9e9;border-radius:0 10px 10px 0;font-size:.94rem}
+.feedback{margin-top:20px;border-radius:15px;padding:17px 19px;border:1px solid #cee5dc;background:#edf9f3}
+.feedback.bad{border-color:#ebc7d4;background:#fff4f7}
+.feedback h3{margin:0 0 5px;font-size:1.13rem;color:#166549}
+.feedback.bad h3{color:#8f3a60}
+.feedback p{margin:0 0 8px}
+.feedback .correct-line{display:block;margin-top:9px;font-weight:800;color:#224f5c}
+.afteranswer{display:flex;justify-content:flex-end;margin-top:21px}
+.rule-panel{margin-top:28px;background:#f2fbfc;border:1px solid #c8e6eb;border-radius:16px;padding:14px 17px;font-size:.94rem}
+.rule-panel strong{color:#076c7b}
+.rule-sample{display:block;margin-top:7px;color:var(--purple-deep);font-weight:800}
+.rule-panel .or{font-weight:500;color:var(--muted);margin:5px 0}
+.finish{text-align:center;max-width:650px;margin:5px auto}
+.finish-icon{font-size:4rem;margin-bottom:8px}
+.finish h2{font-size:2rem}
+.score-big{font-size:4.7rem;line-height:1.06;color:var(--teal);font-weight:900;margin:16px 0 2px;letter-spacing:-.06em}
+.score-caption{font-weight:700;color:var(--muted);font-size:.92rem;margin:0 0 23px}
+.result-tip{padding:16px 19px;border-radius:15px;background:var(--purple-soft);margin:17px 0 25px;text-align:left}
+.result-tip strong{color:var(--purple-deep)}
+.finish-buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.footer{text-align:center;font-size:.82rem;color:#738091;margin-top:18px}
+@media(max-width:630px){.shell{padding:10px 9px 25px}.masthead{border-radius:18px 18px 0 0;padding:24px 21px}.workspace{padding:23px 17px 24px;border-radius:0 0 18px 18px;min-height:450px}.start-layout{grid-template-columns:1fr}.hero-art{display:none}.book{display:none}.choice{font-size:.96rem;padding:13px 12px}.finish-buttons{flex-direction:column}.finish-buttons button{width:100%}.score-big{font-size:3.9rem}}
+@media print{body{background:white}.masthead{box-shadow:none}.workspace{box-shadow:none}.shell{padding:0}.footer{display:none}.finish-buttons{display:none}.hint-row,.rule-panel{display:none}button{display:none}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="masthead">
+    <div class="smalltop">Grade 5 · Grammar Review · 10 Challenges</div>
+    <div class="mastrow"><div><h1>Joella's Grammar Quest <span aria-hidden="true">✦</span></h1><p class="subtitle">Conjunctive Adverbs: however &amp; therefore</p></div><span class="book" aria-hidden="true">📚</span></div>
+  </header>
+  <div class="workspace">
+    <section id="welcome">
+      <div class="start-layout">
+        <div>
+          <span class="pill">✨ Watch the video first!</span>
+          <h2 style="margin-top:17px">Ready to be a punctuation pro?</h2>
+          <p>After watching your Grammar Monster video, show what you've learned in this quick, independent challenge.</p>
+          <ol class="intro-steps">
+            <li>Read each question carefully.</li>
+            <li>Tap the <strong>best answer</strong>.</li>
+            <li>Check your feedback and keep going!</li>
+          </ol>
+          <button class="primary" id="startBtn" type="button">Start My Practice →</button>
+          <div class="note">10 questions · About 5–8 minutes · Not graded</div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><span class="art-spark s1">✦</span><span class="art-spark s2">★</span><span class="art-spark s3">♥</span><span class="art-book">📖</span></div>
+      </div>
+    </section>
+    <section id="play" hidden aria-label="Interactive grammar questions">
+      <div class="topstat"><span class="pill" id="questionCount">Question 1 of 10</span><span class="score" id="scoreText">Score: 0 / 10</span></div>
+      <div class="progress" role="progressbar" aria-label="Practice progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progressOuter"><span id="progressFill"></span></div>
+      <div class="round-label" id="roundLabel">Round 1 · Meaning Match</div>
+      <div class="question" id="questionText"></div>
+      <div class="answers" id="choices" role="group" aria-label="Answer choices"></div>
+      <div class="hint-row"><button class="hint-toggle" id="hintBtn" type="button" aria-expanded="false">💡 Need a hint?</button></div>
+      <div class="hint" id="hintBox" hidden></div>
+      <div class="feedback" id="feedback" hidden role="status" aria-live="polite"></div>
+      <div class="afteranswer"><button class="primary" id="nextBtn" type="button" hidden>Next Question →</button></div>
+      <aside class="rule-panel"><strong>Remember the punctuation rule:</strong><span class="rule-sample">Complete thought; however, complete thought.</span><div class="or">or use a period to make two sentences:</div><span class="rule-sample">Complete thought. Therefore, complete thought.</span></aside>
+    </section>
+    <section id="done" hidden class="finish" aria-live="polite">
+      <div class="finish-icon" aria-hidden="true">🏆</div>
+      <h2 id="finishTitle">Nice work, Joella!</h2>
+      <div class="score-big" id="finishScore">10/10</div>
+      <p class="score-caption" id="scoreCaption">Correct on your first try</p>
+      <p id="finishMessage"></p>
+      <div class="result-tip" id="resultTip"></div>
+      <div class="finish-buttons">
+        <button type="button" class="primary" id="retryBtn" hidden>Practice My Misses →</button>
+        <button type="button" class="secondary" id="againBtn">Play All 10 Again</button>
+      </div>
+    </section>
+  </div>
+  <div class="footer">Made especially for Joella · November Grammar Review 💜</div>
+</main>
+<script>
+'use strict';
+const questions=[
+ {round:'Round 1 · Meaning Match',prompt:'The sidewalk was icy. ______, our neighbors walked carefully. Which conjunctive adverb shows the <em>result</em>?',choices:['However','For example','Therefore','Meanwhile'],answer:2,hint:'Ask yourself: Did the slippery sidewalk cause the careful walking?',explain:'“Therefore” shows a result. The icy sidewalk is the reason the neighbors walked carefully.',correct:'The sidewalk was icy. Therefore, our neighbors walked carefully.'},
+ {round:'Round 1 · Meaning Match',prompt:'We rehearsed every afternoon. ______, we were still nervous before the show. Which conjunctive adverb shows a <em>contrast</em>?',choices:['Therefore','However','Consequently','For example'],answer:1,hint:'The second sentence tells something surprising, even after all that practice.',explain:'“However” shows a contrast. They practiced a lot, but they were still nervous.',correct:'We rehearsed every afternoon. However, we were still nervous before the show.'},
+ {round:'Round 2 · Punctuation Power',prompt:'Which sentence uses <em>however</em> with the correct punctuation?',choices:['The experiment failed, however, we learned something useful.','The experiment failed; however, we learned something useful.','The experiment failed; however we learned something useful.','The experiment failed however, we learned something useful.'],answer:1,hint:'Two complete thoughts in one sentence need a semicolon before the connector and a comma after it.',explain:'A semicolon separates the two complete thoughts. A comma follows “however.”',correct:'The experiment failed; however, we learned something useful.'},
+ {round:'Round 2 · Punctuation Power',prompt:'Choose the correctly punctuated sentence using <em>therefore</em>.',choices:['We arrived early; therefore, we found good seats.','We arrived early, therefore, we found good seats.','We arrived early; therefore we found good seats.','We arrived early therefore, we found good seats.'],answer:0,hint:'Find the option with BOTH punctuation marks in the correct places.',explain:'Use a semicolon before “therefore” and a comma after it when connecting two complete thoughts.',correct:'We arrived early; therefore, we found good seats.'},
+ {round:'Round 3 · Error Detective',prompt:'Read: “The music stopped, however, the dancers kept moving.” What change fixes the punctuation?',choices:['Remove the comma after however.','Replace however with therefore.','Put a colon after however.','Replace the comma before however with a semicolon.'],answer:3,hint:'The dancers kept moving even though the music stopped. The connecting word fits; focus on the punctuation before it.',explain:'A comma by itself cannot join two complete thoughts here. Change the first comma to a semicolon.',correct:'The music stopped; however, the dancers kept moving.'},
+ {round:'Round 3 · Error Detective',prompt:'Read: “The rain stopped; therefore the baseball game began.” What punctuation is missing?',choices:['A comma after therefore','A comma before therefore','A semicolon after therefore','A period after therefore'],answer:0,hint:'The semicolon is already in the right spot. Check what should follow the connecting word.',explain:'The semicolon is correct, but “therefore” needs a comma after it.',correct:'The rain stopped; therefore, the baseball game began.'},
+ {round:'Round 3 · Error Detective',prompt:'Which group of words is a <em>complete thought</em> that could stand alone as a sentence?',choices:['Although it was raining','Because the road was closed','The class stayed indoors','During the long storm'],answer:2,hint:'Look for a group with a subject and a verb that tells a complete idea without needing more words.',explain:'“The class stayed indoors” has a subject and a verb and expresses a complete thought.',correct:'The class stayed indoors.'},
+ {round:'Round 4 · Final Fix',prompt:'Which version correctly uses <em>two separate sentences</em>?',choices:['My book was long. However, I finished it in one day.','My book was long. however, I finished it in one day.','My book was long, however, I finished it in one day.','My book was long; However, I finished it in one day.'],answer:0,hint:'With a period, the next sentence starts with a capital letter. The conjunctive adverb still needs a comma.',explain:'A period separates the thoughts, “However” begins the second sentence with a capital letter, and a comma follows it.',correct:'My book was long. However, I finished it in one day.'},
+ {round:'Round 4 · Final Fix',prompt:'Read: “The batteries were dead; therefore, the remote did not work.” Which statement is true?',choices:['A comma should replace the semicolon.','The comma after therefore should be removed.','The sentence is punctuated correctly.','The semicolon should come after therefore.'],answer:2,hint:'Check for a complete thought on each side and both punctuation marks around “therefore.”',explain:'Both sides are complete thoughts. The semicolon and comma are in the right places.',correct:'The batteries were dead; therefore, the remote did not work.'},
+ {round:'Round 4 · Final Fix',prompt:'Final challenge! Fix this sentence: “The museum was crowded however we stayed to see the exhibit.”',choices:['The museum was crowded, however, we stayed to see the exhibit.','The museum was crowded; however, we stayed to see the exhibit.','The museum was crowded; however we stayed to see the exhibit.','The museum was crowded however, we stayed to see the exhibit.'],answer:1,hint:'The two parts could each be a sentence. What punctuation goes BEFORE and AFTER “however”?',explain:'“However” connects a contrast. Put a semicolon before it and a comma after it.',correct:'The museum was crowded; however, we stayed to see the exhibit.'}
+];
+const $=id=>document.getElementById(id);
+let order=[],position=0,points=0,misses=[],locked=false,reviewMode=false,originalScore=null;
+function show(section){['welcome','play','done'].forEach(id=>$(id).hidden=id!==section);}
+function start(indices=null,redo=false){order=indices || questions.map((_,i)=>i);position=0;points=0;misses=[];locked=false;reviewMode=redo;show('play');render();window.scrollTo({top:0,behavior:'smooth'});}
+function render(){locked=false;const q=questions[order[position]],count=order.length;
+ $('questionCount').textContent=`Question ${position+1} of ${count}`;
+ $('scoreText').textContent=`Score: ${points} / ${count}`;
+ $('progressOuter').setAttribute('aria-valuemax',count);
+ $('progressOuter').setAttribute('aria-valuenow',position);
+ $('progressFill').style.width=(position/count*100)+'%';
+ $('roundLabel').textContent=reviewMode?'Fix-it Round · Practice My Misses':q.round;
+ $('questionText').innerHTML=q.prompt;
+ const answers=$('choices');answers.innerHTML='';q.choices.forEach((option,i)=>{const b=document.createElement('button');b.type='button';b.className='choice';b.setAttribute('aria-label',`Choice ${String.fromCharCode(65+i)}: ${option}`);const letter=document.createElement('span');letter.className='letter';letter.textContent=String.fromCharCode(65+i);const words=document.createElement('span');words.textContent=option;b.append(letter,words);b.addEventListener('click',()=>choose(i));answers.append(b);});
+ $('hintBox').hidden=true;$('hintBox').textContent=q.hint;$('hintBtn').hidden=false;$('hintBtn').setAttribute('aria-expanded','false');$('hintBtn').textContent='💡 Need a hint?';$('feedback').hidden=true;$('nextBtn').hidden=true;$('nextBtn').textContent=position===count-1?'See My Results →':'Next Question →';
+ }
+function choose(i){if(locked)return;locked=true;const q=questions[order[position]],good=i===q.answer;const buttons=[...$('choices').querySelectorAll('button')];buttons.forEach((b,j)=>{b.disabled=true;if(j===q.answer)b.classList.add('correct');if(j===i&&!good)b.classList.add('incorrect');});
+ if(good)points++;else misses.push(order[position]);$('scoreText').textContent=`Score: ${points} / ${order.length}`;
+ $('progressOuter').setAttribute('aria-valuenow',position+1);$('progressFill').style.width=((position+1)/order.length*100)+'%';
+ const feedback=$('feedback');feedback.hidden=false;feedback.className='feedback'+(good?'':' bad');feedback.innerHTML='';const h=document.createElement('h3');h.textContent=good?'✓ You got it!':'↻ Good try—here’s the fix!';const p=document.createElement('p');p.textContent=q.explain;const sample=document.createElement('span');sample.className='correct-line';sample.textContent='Correct example: '+q.correct;feedback.append(h,p,sample);
+ $('nextBtn').hidden=false;$('hintBtn').hidden=true;
+ }
+function finish(){if(!reviewMode)originalScore=points;show('done');$('finishScore').textContent=`${points}/${order.length}`;$('scoreCaption').textContent=reviewMode?'Questions corrected in this fix-it round':'Correct on your first try';$('finishTitle').textContent=points===order.length?'Amazing work, Joella! 🌟':'Good work, Joella!';$('finishMessage').textContent=points===order.length?'You’re using conjunctive adverbs with confidence!':'Practice helps your brain remember. Review the punctuation rule and give your tricky questions another try.';
+ const tip=$('resultTip');tip.innerHTML=points===order.length?'<strong>Remember:</strong> Two complete thoughts can be linked with a semicolon, a conjunctive adverb, and a comma. You can also use two sentences with a period.':'<strong>Keep this rule handy:</strong> Complete thought; however, complete thought. The semicolon goes before the conjunctive adverb, and the comma goes after it.';
+ if(reviewMode&&originalScore!==null){const p=document.createElement('p');p.className='score-caption';p.textContent=`Original round: ${originalScore}/10`;tip.append(p);}
+ $('retryBtn').hidden=misses.length===0;window.scrollTo({top:0,behavior:'smooth'});
+ }
+$('startBtn').addEventListener('click',()=>start());
+$('nextBtn').addEventListener('click',()=>{if(!locked)return;position++;position<order.length?render():finish();});
+$('hintBtn').addEventListener('click',()=>{const b=$('hintBox');b.hidden=!b.hidden;$('hintBtn').textContent=b.hidden?'💡 Need a hint?':'💡 Hide hint';$('hintBtn').setAttribute('aria-expanded',String(!b.hidden));});
+$('retryBtn').addEventListener('click',()=>start([...misses],true));
+$('againBtn').addEventListener('click',()=>{originalScore=null;start();});
+</script>
+</body>
+</html>
